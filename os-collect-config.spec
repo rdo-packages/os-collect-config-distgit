@@ -9,6 +9,8 @@ Source0:		http://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
 
+Patch0001: 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
+
 BuildArch:		noarch
 BuildRequires:		python-setuptools
 BuildRequires:		python2-devel
@@ -35,6 +37,8 @@ Service to collect openstack heat metadata.
 %prep
 
 %setup -q -n %{name}-%{version}
+
+%patch0001 -p1
 
 #
 # patches_base: 0.1.11
