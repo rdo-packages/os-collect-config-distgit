@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.11
-Release:		5%{?dist}
+Release:		6%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -8,8 +8,6 @@ URL:			http://pypi.python.org/pypi/%{name}
 Source0:		http://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
-
-Patch0001: 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
 
 BuildArch:		noarch
 BuildRequires:		python-setuptools
@@ -38,7 +36,9 @@ Service to collect openstack heat metadata.
 
 %setup -q -n %{name}-%{version}
 
-%patch0001 -p1
+#
+# patches_base: 0.1.11
+#
 
 sed -i '/setuptools_git/d' setup.py
 sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
@@ -70,6 +70,9 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Sep 11 2014 James Slagle <jslagle@redhat.com> - 0.1.11-6
+- Switch to rdopkg.
+
 * Tue Feb 25 2014 Steven Dake <sdake@redhat.com> - 0.1.11-5
 - install a os-collect-config default conf file
 
