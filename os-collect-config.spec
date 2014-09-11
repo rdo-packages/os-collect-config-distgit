@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.11
-Release:		6%{?dist}
+Release:		7%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -40,6 +40,10 @@ Service to collect openstack heat metadata.
 
 %patch0001 -p1
 
+#
+# patches_base: 0.1.11
+#
+
 sed -i '/setuptools_git/d' setup.py
 sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
 sed -i s/REDHATOSCOLLECTCONFIGRELEASE/%{release}/ os_collect_config/version.py
@@ -70,6 +74,9 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Sep 11 2014 James Slagle <jslagle@redhat.com> - 0.1.11-7
+- Switch to rdopkg.
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.11-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
