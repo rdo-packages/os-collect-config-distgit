@@ -1,6 +1,6 @@
 Name:			os-collect-config
-Version:		0.1.11
-Release:		7%{?dist}
+Version:		0.1.21
+Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -21,6 +21,7 @@ Requires:		python-setuptools
 Requires:		python-argparse
 Requires:		python-anyjson
 Requires:		python-eventlet
+Requires:		python-heatclient
 Requires:		python-keystoneclient
 Requires:		python-requests
 Requires:		python-iso8601
@@ -74,6 +75,10 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Fri Sep 12 2014 James Slagle <jslagle@redhat.com> 0.1.21-1
+- Update to upstream 0.1.21
+- Add requires on python-heatclient
+
 * Thu Sep 11 2014 James Slagle <jslagle@redhat.com> - 0.1.11-7
 - Switch to rdopkg.
 
