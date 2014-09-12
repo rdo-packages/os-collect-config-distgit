@@ -1,5 +1,5 @@
 Name:			os-collect-config
-Version:		0.1.21
+Version:		0.1.28
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -20,6 +20,7 @@ BuildRequires:		python-pbr
 Requires:		python-setuptools
 Requires:		python-argparse
 Requires:		python-anyjson
+Requires:		python-dogpile-cache
 Requires:		python-eventlet
 Requires:		python-heatclient
 Requires:		python-keystoneclient
@@ -75,6 +76,10 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Fri Sep 12 2014 James Slagle <jslagle@redhat.com> 0.1.28-1
+- Update to upstream 0.1.28
+- Add requires on python-dogpile-cache
+
 * Fri Sep 12 2014 James Slagle <jslagle@redhat.com> 0.1.21-1
 - Update to upstream 0.1.21
 - Add requires on python-heatclient
