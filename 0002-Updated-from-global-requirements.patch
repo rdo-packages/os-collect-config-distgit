@@ -1,0 +1,29 @@
+From 60b56d0820e7175b014c794740e5a37901aed183 Mon Sep 17 00:00:00 2001
+From: OpenStack Proposal Bot <openstack-infra@lists.openstack.org>
+Date: Fri, 24 Apr 2015 13:03:37 +0000
+Subject: [PATCH] Updated from global requirements
+
+Change-Id: I780644b67e532cd82476a1c6ad072c99173eebfa
+---
+ requirements.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index e0ef1f3..621ce72 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -5,12 +5,12 @@ pbr>=0.6,!=0.7,<1.0
+
+ anyjson>=0.3.3
+ argparse
+-eventlet>=0.16.1,!=0.17.0
++eventlet>=0.17.3
+ python-keystoneclient>=1.1.0
+ python-heatclient>=0.3.0
+ requests>=2.2.0,!=2.4.0
+ iso8601>=0.1.9
+ lxml>=2.3
+-oslo.config>=1.9.3,<1.10.0  # Apache-2.0
++oslo.config>=1.9.3  # Apache-2.0
+ six>=1.9.0
+ dogpile.cache>=0.5.3

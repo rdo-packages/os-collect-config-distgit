@@ -1,15 +1,19 @@
 Name:			os-collect-config
-Version:		0.1.28
-Release:		1%{?dist}
+Version:		0.1.33
+Release:		2%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
 URL:			http://pypi.python.org/pypi/%{name}
-Source0:		http://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/o/%{name}/%{name}-%{version}.tar.gz
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
 
-Patch0001: 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
+#
+# patches_base=+1
+Patch0001: 0001-Updated-from-global-requirements.patch
+Patch0002: 0002-Updated-from-global-requirements.patch
+Patch0003: 0003-Use-non-versioned-auth_url-for-keystone.patch
 
 BuildArch:		noarch
 BuildRequires:		python-setuptools
@@ -41,10 +45,8 @@ Service to collect openstack heat metadata.
 %setup -q -n %{name}-%{version}
 
 %patch0001 -p1
-
-#
-# patches_base: 0.1.11
-#
+%patch0002 -p1
+%patch0003 -p1
 
 sed -i '/setuptools_git/d' setup.py
 sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
@@ -76,6 +78,14 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Mon May 11 2015 Mike Burns <mburns@redhat.com> 0.1.33-2
+- Use non-versioned auth_url for keystone
+- Updated from global requirements
+- Updated from global requirements
+
+* Thu May 07 2015 Mike Burns <mburns@redhat.com> 0.1.33-1
+- Update to upstream 0.1.33
+
 * Fri Sep 12 2014 James Slagle <jslagle@redhat.com> 0.1.28-1
 - Update to upstream 0.1.28
 - Add requires on python-dogpile-cache
