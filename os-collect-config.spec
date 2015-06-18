@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.33
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -78,6 +78,9 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.33-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon May 11 2015 Mike Burns <mburns@redhat.com> 0.1.33-2
 - Use non-versioned auth_url for keystone
 - Updated from global requirements
