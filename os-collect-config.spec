@@ -1,19 +1,15 @@
 Name:			os-collect-config
-Version:		0.1.33
-Release:		3%{?dist}
+Version:		0.1.36
+Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
 URL:			http://pypi.python.org/pypi/%{name}
-Source0:        https://pypi.python.org/packages/source/o/%{name}/%{name}-%{version}.tar.gz
+Source0:		http://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
 
-#
-# patches_base=+1
-Patch0001: 0001-Updated-from-global-requirements.patch
-Patch0002: 0002-Updated-from-global-requirements.patch
-Patch0003: 0003-Use-non-versioned-auth_url-for-keystone.patch
+Patch0001: 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
 
 BuildArch:		noarch
 BuildRequires:		python-setuptools
@@ -42,11 +38,13 @@ Service to collect openstack heat metadata.
 
 %prep
 
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{upstream_version}
 
 %patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
+
+#
+# patches_base: 0.1.11
+#
 
 sed -i '/setuptools_git/d' setup.py
 sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
@@ -59,6 +57,9 @@ sed -i s/REDHATOSCOLLECTCONFIGRELEASE/%{release}/ os_collect_config/version.py
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.service
 install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.conf
+
+# Delete tests
+rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 
 %post
 %systemd_post os-collect-config.service
@@ -78,16 +79,8 @@ install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.con
 %{_unitdir}/os-collect-config.service
 
 %changelog
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.33-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Mon May 11 2015 Mike Burns <mburns@redhat.com> 0.1.33-2
-- Use non-versioned auth_url for keystone
-- Updated from global requirements
-- Updated from global requirements
-
-* Thu May 07 2015 Mike Burns <mburns@redhat.com> 0.1.33-1
-- Update to upstream 0.1.33
+* Mon Oct 19 2015 James Slagle <jslagle@redhat.com> 0.1.36-1
+- Update to upstream 0.1.36-1
 
 * Fri Sep 12 2014 James Slagle <jslagle@redhat.com> 0.1.28-1
 - Update to upstream 0.1.28
