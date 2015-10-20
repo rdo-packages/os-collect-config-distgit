@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.36
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -13,8 +13,8 @@ BuildArch:		noarch
 BuildRequires:		python-setuptools
 BuildRequires:		python2-devel
 BuildRequires:		systemd
-BuildRequires:		python-pbr
 
+Requires:		python-pbr
 Requires:		python-setuptools
 Requires:		python-argparse
 Requires:		python-anyjson
@@ -71,6 +71,9 @@ rm -fr %{buildroot}%{python2_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Tue Oct 20 2015 James Slagle <jslagle@redhat.com> 0.1.36-3
+- Add Requires: python-pbr
+
 * Tue Oct 20 2015 James Slagle <jslagle@redhat.com> 0.1.36-2
 - Remove 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
 
