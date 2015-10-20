@@ -51,15 +51,15 @@ sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
 sed -i s/REDHATOSCOLLECTCONFIGRELEASE/%{release}/ os_collect_config/version.py
 
 %build
-%{__python} setup.py build
+%{__python2} setup.py build
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.service
 install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.conf
 
 # Delete tests
-rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
+rm -fr %{buildroot}%{python2_sitelib}/os_collect_config/tests
 
 %post
 %systemd_post os-collect-config.service
@@ -75,7 +75,7 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %doc LICENSE
 %{_bindir}/os-collect-config
 %config(noreplace) %attr(-, root, root) %{_sysconfdir}/os-collect-config.conf
-%{python_sitelib}/os_collect_config*
+%{python2_sitelib}/os_collect_config*
 %{_unitdir}/os-collect-config.service
 
 %changelog
