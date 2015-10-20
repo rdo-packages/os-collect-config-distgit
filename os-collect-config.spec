@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.36
-Release:		3%{?dist}
+Release:		4%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -13,6 +13,7 @@ BuildArch:		noarch
 BuildRequires:		python-setuptools
 BuildRequires:		python2-devel
 BuildRequires:		systemd
+BuildRequires:		python-pbr
 
 Requires:		python-pbr
 Requires:		python-setuptools
@@ -37,10 +38,6 @@ Service to collect openstack heat metadata.
 %prep
 
 %setup -q -n %{name}-%{version}
-
-sed -i '/setuptools_git/d' setup.py
-sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
-sed -i s/REDHATOSCOLLECTCONFIGRELEASE/%{release}/ os_collect_config/version.py
 
 %build
 %{__python2} setup.py build
@@ -71,6 +68,9 @@ rm -fr %{buildroot}%{python2_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Tue Oct 20 2015 James Slagle <jslagle@redhat.com> 0.1.36-4
+- Add BuildRequires: python-pbr
+
 * Tue Oct 20 2015 James Slagle <jslagle@redhat.com> 0.1.36-3
 - Add Requires: python-pbr
 
