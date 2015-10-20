@@ -38,7 +38,7 @@ Service to collect openstack heat metadata.
 
 %prep
 
-%setup -q -n %{name}-%{upstream_version}
+%setup -q -n %{name}-%{version}
 
 %patch0001 -p1
 
