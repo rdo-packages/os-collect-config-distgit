@@ -6,6 +6,8 @@ Before=crond.service
 [Service]
 ExecStart=/usr/bin/os-collect-config
 Restart=on-failure
+KillMode=process
+SendSIGKILL=no
 
 [Install]
 WantedBy=multi-user.target
