@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1371a2_c4549e23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-07-15T21:37:18Z",
+      "side": 1,
+      "message": "Lock is:\nhttps://github.com/openstack/os-refresh-config/blob/master/os_refresh_config/os_refresh_config.py#L115-L121\n\nSo it will exit with error and systemd will keep trying to restart because Restart\u003don-failure\n\nHow does this look like in the journal, can you provide an example of this situation? I\u0027d like to see confirmation it is not spamming logs i.e. that systemd/journal is smart enough to rate-limit it.",
+      "revId": "f2a771f21b05de23a9d6076c3854da7314fe2a4e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1371a2_e4571a25",
+        "filename": "os-collect-config.service",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-07-15T21:37:18Z",
+      "side": 1,
+      "message": "RTFM https://www.freedesktop.org/software/systemd/man/systemd.kill.html",
+      "revId": "f2a771f21b05de23a9d6076c3854da7314fe2a4e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
