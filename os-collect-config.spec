@@ -23,6 +23,8 @@ Requires:		python-anyjson
 Requires:		python-dogpile-cache
 Requires:		python-eventlet
 Requires:		python-heatclient
+Requires:		python-zaqarclient
+Requires:		os-refresh-config
 Requires:		python-keystoneclient
 Requires:		python-requests
 Requires:		python-iso8601
