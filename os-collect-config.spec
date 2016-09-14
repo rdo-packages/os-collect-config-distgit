@@ -1,7 +1,8 @@
+%global milestone .0b3
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		XXX
-Release:		XXX
+Version:		5.0.0
+Release:		0.1%{?milestone}%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -10,6 +11,9 @@ Source0:		http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
 
+#
+# patches_base=5.0.0.0b3
+#
 Patch0001: 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
 
 BuildArch:		noarch
@@ -82,3 +86,6 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Wed Sep 14 2016 Haikel Guemar <hguemar@fedoraproject.org> 5.0.0-0.1
+- Update to 5.0.0.0b3
+
