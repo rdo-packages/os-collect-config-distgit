@@ -6,7 +6,7 @@ Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
 URL:			http://pypi.python.org/pypi/%{name}
-Source0:		http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
+Source0:		https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
 Patch0001: 0001-Remove-pbr-runtime-dependency-and-replace-with-build.patch
