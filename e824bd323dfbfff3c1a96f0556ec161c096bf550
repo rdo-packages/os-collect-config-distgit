@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5adbc538_abd6a8c3",
+        "filename": "os-collect-config.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-11-15T20:12:55Z",
+      "side": 0,
+      "message": "drop above lines too, they were part of \"remove pbr runtime dep\"",
+      "revId": "e824bd323dfbfff3c1a96f0556ec161c096bf550",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
