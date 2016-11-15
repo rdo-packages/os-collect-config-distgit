@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5adbc538_0b931cfb",
+        "filename": "os-collect-config.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-11-15T21:30:53Z",
+      "side": 1,
+      "message": "Also needs runtime dep:\nRequires: python-pbr\n\nhttps://github.com/openstack/os-collect-config/blob/master/os_collect_config/version.py#L16",
+      "revId": "031e081d37f3f9b596bbc0a429288738664313b5",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
