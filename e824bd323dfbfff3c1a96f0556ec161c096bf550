@@ -16,6 +16,24 @@
       "revId": "e824bd323dfbfff3c1a96f0556ec161c096bf550",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5adbc538_8be80c7e",
+        "filename": "os-collect-config.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 168
+      },
+      "writtenOn": "2016-11-15T20:23:08Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5adbc538_abd6a8c3",
+      "revId": "e824bd323dfbfff3c1a96f0556ec161c096bf550",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
