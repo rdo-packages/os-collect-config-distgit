@@ -33,6 +33,7 @@ Requires:		python-oslo-config
 Requires(post):		systemd
 Requires(preun):	systemd
 Requires(postun):	systemd
+Requires:		python-oslo-log >= 3.11.0
 
 %description
 Service to collect openstack heat metadata.
