@@ -71,3 +71,4 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/os-collect-config/commit/?id=bf7cc362d3928aedc2b48f1ffe871436b47b9483
