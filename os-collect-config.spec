@@ -1,6 +1,6 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		5.0.0
+Version:		5.1.0
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -44,10 +44,6 @@ Service to collect openstack heat metadata.
 
 %patch0001 -p1
 
-#
-# patches_base: 0.1.11
-#
-
 sed -i '/setuptools_git/d' setup.py
 sed -i s/REDHATOSCOLLECTCONFIGVERSION/%{version}/ os_collect_config/version.py
 sed -i s/REDHATOSCOLLECTCONFIGRELEASE/%{release}/ os_collect_config/version.py
@@ -81,6 +77,9 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Jan 05 2017 Jon Schlueter <jschluet@redhat.com> 5.1.0-1
+- Update to 5.1.0
+
 * Thu Oct 06 2016 Haikel Guemar <hguemar@fedoraproject.org> 5.0.0-1
 - Update to 5.0.0
 
