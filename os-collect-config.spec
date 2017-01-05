@@ -1,6 +1,6 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		5.0.0
+Version:		5.1.0
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -71,6 +71,11 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Jan 05 2017 Jon Schlueter <jschluet@redhat.com> 5.1.0-1
+- Update to 5.1.0
+- drop pbr hack patch
+- switch to https for source tarball
+
 * Thu Oct 06 2016 Haikel Guemar <hguemar@fedoraproject.org> 5.0.0-1
 - Update to 5.0.0
 
