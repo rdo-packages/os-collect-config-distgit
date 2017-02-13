@@ -1,12 +1,17 @@
+%global milestone .0rc1
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		XXX
-Release:		XXX
+Version:		6.0.0
+Release:		0.1%{?milestone}%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
 URL:			http://pypi.python.org/pypi/%{name}
 Source0:		https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
+#
+# patches_base=6.0.0.0rc1
+#
+
 Source1:		os-collect-config.service
 Source2:		os-collect-config.conf
 
@@ -71,3 +76,6 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Mon Feb 13 2017 Alfredo Moralejo <amoralej@redhat.com> 6.0.0-0.1.0rc1
+- Update to 6.0.0.0rc1
+
