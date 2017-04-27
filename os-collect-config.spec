@@ -1,6 +1,6 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		5.1.0
+Version:		5.2.0
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -71,6 +71,9 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Apr 27 2017 rdo-trunk <javier.pena@redhat.com> 5.2.0-1
+- Update to 5.2.0
+
 * Thu Jan 05 2017 Jon Schlueter <jschluet@redhat.com> 5.1.0-1
 - Update to 5.1.0
 - drop pbr hack patch
