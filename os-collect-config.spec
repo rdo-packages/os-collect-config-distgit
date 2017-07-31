@@ -17,7 +17,6 @@ BuildRequires:		systemd
 BuildRequires:		python-pbr
 
 Requires:		python-pbr
-Requires:		python-setuptools
 Requires:		python-anyjson
 Requires:		python-dogpile-cache
 Requires:		python-eventlet
