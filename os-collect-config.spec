@@ -20,19 +20,19 @@ Requires:		python-pbr
 Requires:		python-anyjson
 Requires:		python-dogpile-cache
 Requires:		python-eventlet
-Requires:		python-heatclient
-Requires:		python-zaqarclient
+Requires:		python-heatclient >= 1.6.1
+Requires:		python-zaqarclient >= 1.0.0
 Requires:		os-refresh-config
-Requires:		python-keystoneclient
+Requires:		python-keystoneclient >= 1:3.8.0
 Requires:		python-requests
 Requires:		python-iso8601
 Requires:		python-lxml
 Requires:		python-six
-Requires:		python-oslo-config
+Requires:		python-oslo-config >= 2:4.0.0
 Requires(post):		systemd
 Requires(preun):	systemd
 Requires(postun):	systemd
-Requires:		python-oslo-log >= 3.11.0
+Requires:		python-oslo-log >= 3.22.0
 
 %description
 Service to collect openstack heat metadata.
