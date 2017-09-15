@@ -29,10 +29,8 @@ Requires:		python-iso8601
 Requires:		python-lxml
 Requires:		python-six
 Requires:		python-oslo-config >= 2:4.0.0
-Requires(post):		systemd
-Requires(preun):	systemd
-Requires(postun):	systemd
 Requires:		python-oslo-log >= 3.22.0
+%{?systemd_requires}
 
 %description
 Service to collect openstack heat metadata.
