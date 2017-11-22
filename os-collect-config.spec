@@ -1,6 +1,6 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		7.2.0
+Version:		7.2.1
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -70,6 +70,9 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Wed Nov 22 2017 RDO <dev@lists.rdoproject.org> 7.2.1-1
+- Update to 7.2.1
+
 * Sun Sep 10 2017 rdo-trunk <javier.pena@redhat.com> 7.2.0-1
 - Update to 7.2.0
 
