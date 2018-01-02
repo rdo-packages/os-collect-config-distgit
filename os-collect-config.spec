@@ -46,6 +46,7 @@ Service to collect openstack heat metadata.
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.service
 install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.conf
+mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 
 # Delete tests
 rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
@@ -66,5 +67,6 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %config(noreplace) %attr(-, root, root) %{_sysconfdir}/os-collect-config.conf
 %{python_sitelib}/os_collect_config*
 %{_unitdir}/os-collect-config.service
+%{_sharedstatedir}/%{name}/local-data
 
 %changelog
