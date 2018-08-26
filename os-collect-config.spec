@@ -28,7 +28,7 @@ Requires:		python2-requests
 Requires:		python2-iso8601
 Requires:		python-lxml
 Requires:		python2-six
-Requires:		python2-oslo-config >= 2:5.1.0
+Requires:		python2-oslo-config >= 2:5.2.0
 Requires:		python2-oslo-log >= 3.36.0
 %{?systemd_requires}
 
