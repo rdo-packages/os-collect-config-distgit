@@ -6,6 +6,7 @@ Before=crond.service
 [Service]
 ExecStart=/usr/bin/os-collect-config
 Restart=on-failure
+RestartForceExitStatus=SIGPIPE
 KillMode=process
 SendSIGKILL=no
 
