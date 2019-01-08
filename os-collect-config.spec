@@ -1,14 +1,14 @@
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
-%global pydefault 3
+%global pyver 3
 %else
-%global pydefault 2
+%global pyver 2
 %endif
 
-%global pydefault_bin python%{pydefault}
-%global pydefault_sitelib %python%{pydefault}_sitelib
-%global pydefault_install %py%{pydefault}_install
-%global pydefault_build %py%{pydefault}_build
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
@@ -28,29 +28,29 @@ BuildArch:		noarch
 BuildRequires:		systemd
 Requires:		os-refresh-config
 
-BuildRequires:		python%{pydefault}-setuptools
-BuildRequires:		python%{pydefault}-devel
-BuildRequires:		python%{pydefault}-pbr
+BuildRequires:		python%{pyver}-setuptools
+BuildRequires:		python%{pyver}-devel
+BuildRequires:		python%{pyver}-pbr
 
-Requires:		python%{pydefault}-pbr
-Requires:		python%{pydefault}-eventlet
-Requires:		python%{pydefault}-heatclient >= 1.10.0
-Requires:		python%{pydefault}-zaqarclient >= 1.0.0
-Requires:		python%{pydefault}-keystoneclient >= 1:3.8.0
-Requires:		python%{pydefault}-requests
-Requires:		python%{pydefault}-iso8601
-Requires:		python%{pydefault}-six
-Requires:		python%{pydefault}-oslo-config >= 2:5.2.0
-Requires:		python%{pydefault}-oslo-log >= 3.36.0
+Requires:		python%{pyver}-pbr
+Requires:		python%{pyver}-eventlet
+Requires:		python%{pyver}-heatclient >= 1.10.0
+Requires:		python%{pyver}-zaqarclient >= 1.0.0
+Requires:		python%{pyver}-keystoneclient >= 1:3.8.0
+Requires:		python%{pyver}-requests
+Requires:		python%{pyver}-iso8601
+Requires:		python%{pyver}-six
+Requires:		python%{pyver}-oslo-config >= 2:5.2.0
+Requires:		python%{pyver}-oslo-log >= 3.36.0
 
-%if %{pydefault} == 2
+%if %{pyver} == 2
 Requires:		python-anyjson
 Requires:		python-dogpile-cache
 Requires:		python-lxml
 %else
-Requires:		python%{pydefault}-anyjson
-Requires:		python%{pydefault}-dogpile-cache
-Requires:		python%{pydefault}-lxml
+Requires:		python%{pyver}-anyjson
+Requires:		python%{pyver}-dogpile-cache
+Requires:		python%{pyver}-lxml
 %endif
 %{?systemd_requires}
 
@@ -62,16 +62,16 @@ Service to collect openstack heat metadata.
 %setup -q -n %{name}-%{upstream_version}
 
 %build
-%{pydefault_build}
+%{pyver_build}
 
 %install
-%{pydefault_install}
+%{pyver_install}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.service
 install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.conf
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 
 # Delete tests
-rm -fr %{buildroot}%{pydefault_sitelib}/os_collect_config/tests
+rm -fr %{buildroot}%{pyver_sitelib}/os_collect_config/tests
 
 %post
 %systemd_post os-collect-config.service
@@ -89,6 +89,6 @@ rm -fr %{buildroot}%{pydefault_sitelib}/os_collect_config/tests
 %config(noreplace) %attr(-, root, root) %{_sysconfdir}/os-collect-config.conf
 %{_unitdir}/os-collect-config.service
 %{_sharedstatedir}/%{name}/local-data
-%{pydefault_sitelib}/os_collect_config*
+%{pyver_sitelib}/os_collect_config*
 
 %changelog
