@@ -1,6 +1,6 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:			os-collect-config
-Version:		8.3.0
+Version:		8.3.1
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -70,6 +70,9 @@ rm -fr %{buildroot}%{python_sitelib}/os_collect_config/tests
 %{_sharedstatedir}/%{name}/local-data
 
 %changelog
+* Mon Mar 18 2019 RDO <dev@lists.rdoproject.org> 8.3.1-1
+- Update to 8.3.1
+
 * Thu Mar 08 2018 RDO <dev@lists.rdoproject.org> 8.3.0-1
 - Update to 8.3.0
 
