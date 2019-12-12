@@ -14,7 +14,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:			os-collect-config
-Version:		10.3.0
+Version:		10.3.1
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -92,6 +92,9 @@ rm -fr %{buildroot}%{pyver_sitelib}/os_collect_config/tests
 %{pyver_sitelib}/os_collect_config*
 
 %changelog
+* Thu Dec 12 2019 RDO <dev@lists.rdoproject.org> 10.3.1-1
+- Update to 10.3.1
+
 * Thu Apr 18 2019 RDO <dev@lists.rdoproject.org> 10.3.0-1
 - Update to 10.3.0
 
