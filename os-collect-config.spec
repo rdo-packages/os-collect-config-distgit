@@ -1,15 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver 3
-%else
-%global pyver 2
-%endif
-
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -28,30 +16,24 @@ BuildArch:		noarch
 BuildRequires:		systemd
 Requires:		os-refresh-config
 
-BuildRequires:		python%{pyver}-setuptools
-BuildRequires:		python%{pyver}-devel
-BuildRequires:		python%{pyver}-pbr
+BuildRequires:		python3-setuptools
+BuildRequires:		python3-devel
+BuildRequires:		python3-pbr
 
-Requires:		python%{pyver}-pbr
-Requires:		python%{pyver}-eventlet
-Requires:		python%{pyver}-heatclient >= 1.10.0
-Requires:		python%{pyver}-zaqarclient >= 1.0.0
-Requires:		python%{pyver}-keystoneclient >= 1:3.8.0
-Requires:		python%{pyver}-requests
-Requires:		python%{pyver}-iso8601
-Requires:		python%{pyver}-six
-Requires:		python%{pyver}-oslo-config >= 2:5.2.0
-Requires:		python%{pyver}-oslo-log >= 3.36.0
+Requires:		python3-pbr
+Requires:		python3-eventlet
+Requires:		python3-heatclient >= 1.10.0
+Requires:		python3-zaqarclient >= 1.0.0
+Requires:		python3-keystoneclient >= 1:3.8.0
+Requires:		python3-requests
+Requires:		python3-iso8601
+Requires:		python3-six
+Requires:		python3-oslo-config >= 2:5.2.0
+Requires:		python3-oslo-log >= 3.36.0
 
-%if %{pyver} == 2
-Requires:		python-anyjson
-Requires:		python-dogpile-cache
-Requires:		python-lxml
-%else
-Requires:		python%{pyver}-anyjson
-Requires:		python%{pyver}-dogpile-cache
-Requires:		python%{pyver}-lxml
-%endif
+Requires:		python3-anyjson
+Requires:		python3-dogpile-cache
+Requires:		python3-lxml
 %{?systemd_requires}
 
 %description
@@ -62,16 +44,16 @@ Service to collect openstack heat metadata.
 %setup -q -n %{name}-%{upstream_version}
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %install
-%{pyver_install}
+%{py3_install}
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.service
 install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.conf
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 
 # Delete tests
-rm -fr %{buildroot}%{pyver_sitelib}/os_collect_config/tests
+rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
 
 %post
 %systemd_post os-collect-config.service
@@ -89,6 +71,6 @@ rm -fr %{buildroot}%{pyver_sitelib}/os_collect_config/tests
 %config(noreplace) %attr(-, root, root) %{_sysconfdir}/os-collect-config.conf
 %{_unitdir}/os-collect-config.service
 %{_sharedstatedir}/%{name}/local-data
-%{pyver_sitelib}/os_collect_config*
+%{python3_sitelib}/os_collect_config*
 
 %changelog
