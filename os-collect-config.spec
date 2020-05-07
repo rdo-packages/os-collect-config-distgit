@@ -2,8 +2,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:			os-collect-config
-Version:		XXX
-Release:		XXX
+Version:		11.0.0
+Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -74,3 +74,6 @@ rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
 %{python3_sitelib}/os_collect_config*
 
 %changelog
+* Thu May 07 2020 RDO <dev@lists.rdoproject.org> 11.0.0-1
+- Update to 11.0.0
+
