@@ -2,7 +2,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:			os-collect-config
-Version:		11.0.1
+Version:		11.0.2
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -14,6 +14,7 @@ Source2:		os-collect-config.conf
 
 BuildArch:		noarch
 BuildRequires:		systemd
+BuildRequires:		git
 Requires:		os-refresh-config
 
 BuildRequires:		python3-setuptools
@@ -41,7 +42,7 @@ Service to collect openstack heat metadata.
 
 %prep
 
-%setup -q -n %{name}-%{upstream_version}
+%setup -q -n %{name}-%{upstream_version} -S git
 
 %build
 %{py3_build}
@@ -74,6 +75,9 @@ rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
 %{python3_sitelib}/os_collect_config*
 
 %changelog
+* Thu Jan 28 2021 RDO <dev@lists.rdoproject.org> 11.0.2-1
+- Update to 11.0.2
+
 * Mon Oct 05 2020 RDO <dev@lists.rdoproject.org> 11.0.1-1
 - Update to 11.0.1
 
