@@ -2,7 +2,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:			os-collect-config
-Version:		11.0.1
+Version:		11.0.3
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -74,6 +74,9 @@ rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
 %{python3_sitelib}/os_collect_config*
 
 %changelog
+* Mon Mar 15 2021 RDO <dev@lists.rdoproject.org> 11.0.3-1
+- Update to 11.0.3
+
 * Mon Oct 05 2020 RDO <dev@lists.rdoproject.org> 11.0.1-1
 - Update to 11.0.1
 
