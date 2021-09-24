@@ -34,17 +34,14 @@ BuildRequires:		python3-devel
 BuildRequires:		python3-pbr
 
 Requires:		python3-pbr
-Requires:		python3-eventlet
 Requires:		python3-heatclient >= 1.10.0
 Requires:		python3-zaqarclient >= 1.0.0
 Requires:		python3-keystoneclient >= 1:3.8.0
 Requires:		python3-requests
-Requires:		python3-iso8601
 Requires:		python3-six
 Requires:		python3-oslo-config >= 2:5.2.0
 Requires:		python3-oslo-log >= 3.36.0
 
-Requires:		python3-anyjson
 Requires:		python3-dogpile-cache
 Requires:		python3-lxml
 %{?systemd_requires}
