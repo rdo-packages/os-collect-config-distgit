@@ -38,7 +38,6 @@ Requires:		python3-heatclient >= 1.10.0
 Requires:		python3-zaqarclient >= 1.0.0
 Requires:		python3-keystoneclient >= 1:3.8.0
 Requires:		python3-requests
-Requires:		python3-six
 Requires:		python3-oslo-config >= 2:5.2.0
 Requires:		python3-oslo-log >= 3.36.0
 
