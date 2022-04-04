@@ -1,11 +1,11 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:			os-collect-config
-Version:		XXX
-Release:		XXX
+Version:		13.1.0
+Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -87,3 +87,6 @@ rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
 %{python3_sitelib}/os_collect_config*
 
 %changelog
+* Mon Apr 04 2022 RDO <dev@lists.rdoproject.org> 13.1.0-1
+- Update to 13.1.0
+
