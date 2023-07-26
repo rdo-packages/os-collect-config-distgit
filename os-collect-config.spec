@@ -1,5 +1,7 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate sphinx openstackdocstheme
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -8,7 +10,7 @@ Version:		XXX
 Release:		XXX
 Summary:		Collect and cache metadata running hooks on changes
 
-License:		ASL 2.0
+License:		Apache-2.0
 URL:			http://pypi.python.org/pypi/%{name}
 Source0:		https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 Source1:		os-collect-config.service
@@ -18,7 +20,6 @@ Source2:		os-collect-config.conf
 Source101:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz.asc
 Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
 %endif
-
 BuildArch:		noarch
 
 # Required for tarball sources verification
@@ -26,23 +27,15 @@ BuildArch:		noarch
 BuildRequires:  /usr/bin/gpgv2
 BuildRequires:  openstack-macros
 %endif
+
 BuildRequires:		systemd
+BuildRequires:		python3-devel
+BuildRequires:		pyproject-rpm-macros
+# Needed fot the tests setting specific locale
+BuildRequires:		glibc-langpack-en
+
 Requires:		os-refresh-config
 
-BuildRequires:		python3-setuptools
-BuildRequires:		python3-devel
-BuildRequires:		python3-pbr
-
-Requires:		python3-pbr
-Requires:		python3-heatclient >= 1.10.0
-Requires:		python3-zaqarclient >= 1.0.0
-Requires:		python3-keystoneclient >= 1:3.8.0
-Requires:		python3-requests
-Requires:		python3-oslo-config >= 2:5.2.0
-Requires:		python3-oslo-log >= 3.36.0
-
-Requires:		python3-dogpile-cache
-Requires:		python3-lxml
 %{?systemd_requires}
 
 %description
@@ -56,17 +49,36 @@ Service to collect openstack heat metadata.
 
 %setup -q -n %{name}-%{upstream_version}
 
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+# Automatic BR generation
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
+
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
+
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.service
 install -p -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/os-collect-config.conf
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 
-# Delete tests
-rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
+%check
+%tox -e %{default_toxenv}
 
 %post
 %systemd_post os-collect-config.service
@@ -85,5 +97,6 @@ rm -fr %{buildroot}%{python3_sitelib}/os_collect_config/tests
 %{_unitdir}/os-collect-config.service
 %{_sharedstatedir}/%{name}/local-data
 %{python3_sitelib}/os_collect_config*
+%exclude %{python3_sitelib}/os_collect_config/tests
 
 %changelog
