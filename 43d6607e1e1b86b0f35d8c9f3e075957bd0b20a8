@@ -22,6 +22,30 @@
       },
       "revId": "43d6607e1e1b86b0f35d8c9f3e075957bd0b20a8",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b51357_917692a5",
+        "filename": "os-collect-config.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-07-31T16:00:24Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "eb89067e_9404eea1",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "43d6607e1e1b86b0f35d8c9f3e075957bd0b20a8",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
