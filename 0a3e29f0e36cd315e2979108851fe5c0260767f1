@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98310c80_6acd996c",
+        "filename": "os-collect-config.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-08-01T07:06:27Z",
+      "side": 1,
+      "message": "not building docs, let\u0027s exclude sphinx and openstackdocstheme",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 22
+      },
+      "revId": "0a3e29f0e36cd315e2979108851fe5c0260767f1",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
