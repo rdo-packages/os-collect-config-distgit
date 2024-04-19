@@ -6,7 +6,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:			os-collect-config
-Version:		13.2.0
+Version:		14.0.0
 Release:		1%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
@@ -100,6 +100,9 @@ mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 %exclude %{python3_sitelib}/os_collect_config/tests
 
 %changelog
+* Fri Apr 19 2024 RDO <dev@lists.rdoproject.org> 14.0.0-1
+- Update to 14.0.0
+
 * Tue Apr 16 2024 RDO <dev@lists.rdoproject.org> 13.2.0-1
 - Update to 13.2.0
 
