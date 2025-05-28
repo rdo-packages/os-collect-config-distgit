@@ -106,3 +106,4 @@ mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 * Tue Apr 16 2024 RDO <dev@lists.rdoproject.org> 13.2.0-1
 - Update to 13.2.0
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/os-collect-config/commit/3b3d81af45ebaca5cd7c933a12bd33e1ad1fb6d4
