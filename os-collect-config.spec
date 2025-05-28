@@ -100,3 +100,4 @@ mkdir -p %{buildroot}%{_sharedstatedir}/%{name}/local-data
 %exclude %{python3_sitelib}/os_collect_config/tests
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/os-collect-config/commit/3b3d81af45ebaca5cd7c933a12bd33e1ad1fb6d4
